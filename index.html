@@ -1,0 +1,198 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保養計畫列表</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+            /* Custom class for green background */
+            .green-bg {
+                background-color: #00FF00;
+                color: black; /* Optional: Set text color to white for better visibility */
+            }
+            .red-bg {
+                background-color:#FF0000;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <table id="maintenanceTable">
+        <tr>
+            <th>時數</th>
+            <th>E1</th>
+            <th>E10</th>
+            <th>E20</th>
+            <th>E30</th>
+            <th>E40</th>
+            <th>E50</th>
+            <th>E60</th>
+            <th>E70</th>
+            <th>TC01</th>
+            <th>TC02</th>
+            <th>G1</th>
+            <th>B1</th>
+            <th>D1</th>
+            <th>通知日期</th>
+            <th>確認日期</th>
+            <th>完成日期</th>
+            <th>SMU</th>
+            <th>備註</th>
+        </tr>
+        <!-- 假設有5筆保養計畫資料，這裡僅作示範 -->
+        <tr>
+            <td>as specified</td>
+            <td class="green-bg">X</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>2021/04/20</td>
+            <td>2021/04/20</td>
+            <td>2021/04/20</td>
+            <td>0</td>
+            <td></td>
+        </tr>
+        <!-- 類似地加入其他保養計畫資料 -->
+        <tr>
+            <td>50</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>2021/04/20</td>
+            <td>2021/04/20</td>
+            <td>2021/04/20</td>
+            <td>0</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2,000</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>2021/04/20</td>
+            <td>2021/04/20</td>
+            <td>2021/04/20</td>
+            <td>0</td>
+            <td></td>
+        </tr>
+    </table>
+    <!-- 按钮 -->
+    <button id="addButton">新增保養計畫</button>
+
+    <!-- 彈跳視窗範本 -->
+    <div id="popup">
+        <h2>填寫保養計畫</h2>
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <label>E1:</label>
+        <input type="text" id="e1Input">
+        <!-- 添加其他欄位的輸入框 -->
+
+        <button id="submitBtn">送出</button>
+        <button id="cancelBtn">取消</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 點擊按鈕，顯示彈跳視窗
+            $("#addButton").on("click", function() {
+                $("#popup").show();
+            });
+
+            // 點擊取消按鈕，隱藏彈跳視窗
+            $("#cancelBtn").on("click", function() {
+                $("#popup").hide();
+            });
+
+            // 點擊送出按鈕，將填寫的資料新增至表格中
+            $("#submitBtn").on("click", function() {
+                // 取得輸入的值
+                var e1Value = $("#e1Input").val();
+                // 取得其他欄位的值
+
+                // 在表格中新增一列並插入填寫的資料
+                var newRow = $("<tr></tr>");
+                newRow.append("<td>" + e1Value + "</td>");
+                // 添加其他欄位的值
+
+                $("#maintenanceTable").append(newRow);
+                // 隱藏彈跳視窗
+                $("#popup").hide();
+            });
+        });
+    </script>
+
+</body>
+</html>
